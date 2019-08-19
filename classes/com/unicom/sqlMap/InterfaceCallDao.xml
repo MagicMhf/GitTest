@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="InterfaceCall">
+	<!--根据用户id查询三要素剩余次数-->
+	<select id="getRaminNum" parameterType="Integer" resultType="String">
+		SELECT num FROM risk_num_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询wo剩余次数-->
+	<select id="getRaminWoNum" parameterType="Integer" resultType="String">
+		SELECT num FROM risk_num_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询三要素剩余次数-->
+	<select id="getRaminSanNum" parameterType="Integer" resultType="String">
+		SELECT san_num FROM risk_num_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询黑名单剩余次数-->
+	<select id="getRaminBlackNum" parameterType="Integer" resultType="String">
+		SELECT black_num FROM risk_num_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询身份证剩余次数-->
+	<select id="getRaminIdNum" parameterType="Integer" resultType="String">
+		SELECT id_num FROM risk_num_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询月消费剩余次数-->
+	<select id="getRaminMoonNum" parameterType="Integer" resultType="String">
+		SELECT moon_num FROM risk_num_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据文件名-->
+	<select id="getFileName" parameterType="String" resultType="String">
+		SELECT file_name FROM risk_upload_info WHERE id = #{upload_id}
+	</select>
+	
+	<!--根据订单号查询用户ID-->
+	<select id="getBuyUserId" parameterType="String" resultType="Integer">
+		SELECT user_id FROM risk_order_info WHERE order_num = #{order_num}
+	</select>
+	
+	<!--根据订单查询状态-->
+	<select id="getListenStatus" parameterType="String" resultType="String">
+		SELECT status FROM risk_order_info WHERE order_num = #{order_num}
+	</select>
+	
+	<!--根据用户id查询三要素剩余试用次数-->
+	<select id="getTryoutNum" parameterType="String" resultType="Integer">
+		SELECT num FROM risk_try_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询三要素剩余试用次数-->
+	<select id="getTryoutSanNum" parameterType="String" resultType="Integer">
+		SELECT san_num FROM risk_try_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询身份证剩余试用次数-->
+	<select id="getTryoutIdNum" parameterType="String" resultType="Integer">
+		SELECT id_num FROM risk_try_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询黑名单剩余试用次数-->
+	<select id="getTryoutBlackNum" parameterType="String" resultType="Integer">
+		SELECT black_num FROM risk_try_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据用户id查询月消费剩余试用次数-->
+	<select id="getTryoutMoonNum" parameterType="String" resultType="Integer">
+		SELECT moon_num FROM risk_try_info WHERE user_id = #{user_id}
+	</select>
+	
+	<!--根据订单号查询订单状态-->
+	<select id="getStatus" parameterType="String" resultType="String">
+		SELECT status FROM risk_order_info WHERE order_num = #{order_num}
+	</select>
+	
+	<!--新增订单记录-->
+	    <insert id="addOrderInfo" parameterType="OrderInfoPO">
+		INSERT INTO RISK_ORDER_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="ordernum != '' and ordernum != null">
+				order_num,<!--订单号-->
+			</if>
+			<if test="itfcid != '' and itfcid != null">
+				itfc_id,<!--接口id-->
+			</if>
+			<if test="userid != '' and userid != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="num != '' and num != null">
+				num,<!--购买次数-->
+			</if>
+			<if test="businessname != '' and businessname != null">
+				business_name,<!--商户名称-->
+			</if>
+			<if test="amount != '' and amount != null">
+				amount,<!--订单金额-->
+			</if>
+			<if test="datetime != '' and datetime != null">
+				datetime,<!--购买时间-->
+			</if>
+			<if test="status != '' and status != null">
+				status<!--状态-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="ordernum != null and ordernum != ''">
+				#{ordernum, jdbcType=VARCHAR},
+			</if>
+			<if test="itfcid != null and itfcid != ''">
+				#{itfcid, jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null and userid != ''">
+				#{userid, jdbcType=INTEGER},
+			</if>
+			<if test="num != null and num != ''">
+				#{num, jdbcType=VARCHAR},
+			</if>
+			<if test="businessname != null and businessname != ''">
+				#{businessname, jdbcType=VARCHAR},
+			</if>
+			<if test="amount != null and amount != ''">
+				#{amount, jdbcType=VARCHAR},
+			</if>
+			<if test="datetime != null and datetime != ''">
+				#{datetime, jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				#{status, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+	
+	<!--新增上传记录信息-->
+    <insert id="addUploadInfo" parameterType="UploadInfoPO">
+		INSERT INTO RISK_UPLOAD_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="userId != '' and userId != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="itfcId != '' and itfcId != null">
+				itfc_id,<!--接口id-->
+			</if>
+			<if test="fileName != '' and fileName != null">
+				file_name,<!--文件名-->
+			</if>
+			<if test="num != '' and num != null">
+				num,<!--上传条数-->
+			</if>
+			<if test="dateTime != '' and dateTime != null">
+				date_time,<!--创建时间-->
+			</if>
+			<if test="status != '' and status != null">
+				status<!--状态-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null and userId != ''">
+				#{userId, jdbcType=INTEGER},
+			</if>
+			<if test="itfcId != null and itfcId != ''">
+				#{itfcId, jdbcType=VARCHAR},
+			</if>
+			<if test="fileName != null and fileName != ''">
+				#{fileName, jdbcType=VARCHAR},
+			</if>
+			<if test="num != null and num != ''">
+				#{num, jdbcType=VARCHAR},
+			</if>
+			<if test="dateTime != null and dateTime != ''">
+				#{dateTime, jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				#{status, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+	
+	<!--新增三要素验证信息-->
+    <insert id="addThirdEleInfo" parameterType="ThirdEleInfoPO">
+		INSERT INTO RISK_THREEEL_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="user_id != '' and user_id != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="upload_id != '' and upload_id != null">
+				upload_id,<!--文件上传记录id-->
+			</if>
+			<if test="reqtype != '' and reqtype != null">
+				reqtype,<!--调用类型-->
+			</if>
+			<if test="mobile != '' and mobile != null">
+				mobile,<!--手机号-->
+			</if>
+			<if test="idcard != '' and idcard != null">
+				idcard,<!--证件号-->
+			</if>
+			<if test="realname != '' and realname != null">
+				realname,<!--姓名-->
+			</if>
+			<if test="res != '' and res != null">
+				res,<!--匹配结果-->
+			</if>
+			<if test="resmsg != '' and resmsg != null">
+				resmsg,<!--匹配结果-->
+			</if>
+			<if test="type != '' and type != null">
+				type,<!--手机运营商-->
+			</if>
+			<if test="orderid != '' and orderid != null">
+				orderid,<!--聚合订单号-->
+			</if>
+			<if test="province != '' and province != null">
+				province,<!--归属地省份-->
+			</if>
+			<if test="city != '' and city != null">
+				city,<!--归属地城市-->
+			</if>
+			<if test="rescode != '' and rescode != null">
+				rescode,<!--匹配详情码-->
+			</if>
+			<if test="error_code != '' and error_code != null">
+				error_code,<!--创建时间-->
+			</if>
+			<if test="reason != '' and reason != null">
+				reason<!--状态-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="user_id != null and user_id != ''">
+				#{user_id, jdbcType=INTEGER},
+			</if>
+			<if test="upload_id != null and upload_id != ''">
+				#{upload_id, jdbcType=VARCHAR},
+			</if>
+			<if test="reqtype != null and reqtype != ''">
+				#{reqtype, jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null and mobile != ''">
+				#{mobile, jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null and idcard != ''">
+				#{idcard, jdbcType=VARCHAR},
+			</if>
+			<if test="realname != null and realname != ''">
+				#{realname, jdbcType=VARCHAR},
+			</if>
+			<if test="res != null and res != ''">
+				#{res, jdbcType=VARCHAR},
+			</if>
+			<if test="resmsg != null and resmsg != ''">
+				#{resmsg, jdbcType=VARCHAR},
+			</if>
+			<if test="type != null and type != ''">
+				#{type, jdbcType=VARCHAR},
+			</if>
+			<if test="orderid != null and orderid != ''">
+				#{orderid, jdbcType=VARCHAR},
+			</if>
+			<if test="province != null and province != ''">
+				#{province, jdbcType=VARCHAR},
+			</if>
+			<if test="city != null and city != ''">
+				#{city, jdbcType=VARCHAR},
+			</if>
+			<if test="rescode != null and rescode != ''">
+				#{rescode, jdbcType=VARCHAR},
+			</if>
+			<if test="error_code != null and error_code != ''">
+				#{error_code, jdbcType=VARCHAR},
+			</if>
+			<if test="reason != null and reason != ''">
+				#{reason, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+	
+	<!--新增三要素简版验证信息-->
+    <insert id="addSimpleThirdEleInfo" parameterType="SimpleThirdEleInfoPO">
+		INSERT INTO RISK_SIMPLETHREEEL_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="user_id != '' and user_id != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="upload_id != '' and upload_id != null">
+				upload_id,<!--文件上传记录id-->
+			</if>
+			<if test="reqtype != '' and reqtype != null">
+				reqtype,<!--调用类型-->
+			</if>
+			<if test="mobile != '' and mobile != null">
+				mobile,<!--手机号-->
+			</if>
+			<if test="idcard != '' and idcard != null">
+				idcard,<!--证件号-->
+			</if>
+			<if test="realname != '' and realname != null">
+				realname,<!--姓名-->
+			</if>
+			<if test="res != '' and res != null">
+				res,<!--匹配结果-->
+			</if>
+			<if test="resmsg != '' and resmsg != null">
+				resmsg,<!--匹配结果-->
+			</if>
+			<if test="error_code != '' and error_code != null">
+				error_code,<!--创建时间-->
+			</if>
+			<if test="reason != '' and reason != null">
+				reason<!--状态-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="user_id != null and user_id != ''">
+				#{user_id, jdbcType=INTEGER},
+			</if>
+			<if test="upload_id != null and upload_id != ''">
+				#{upload_id, jdbcType=VARCHAR},
+			</if>
+			<if test="reqtype != null and reqtype != ''">
+				#{reqtype, jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null and mobile != ''">
+				#{mobile, jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null and idcard != ''">
+				#{idcard, jdbcType=VARCHAR},
+			</if>
+			<if test="realname != null and realname != ''">
+				#{realname, jdbcType=VARCHAR},
+			</if>
+			<if test="res != null and res != ''">
+				#{res, jdbcType=VARCHAR},
+			</if>
+			<if test="resmsg != null and resmsg != ''">
+				#{resmsg, jdbcType=VARCHAR},
+			</if>
+			<if test="error_code != null and error_code != ''">
+				#{error_code, jdbcType=VARCHAR},
+			</if>
+			<if test="reason != null and reason != ''">
+				#{reason, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+	
+	<!--新增黑名单验证信息-->
+    <insert id="addBlackEleInfo" parameterType="blackEleInfoPO">
+		INSERT INTO RISK_BLACK_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="user_id != '' and user_id != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="upload_id != '' and upload_id != null">
+				upload_id,<!--文件上传记录id-->
+			</if>
+			<if test="reqtype != '' and reqtype != null">
+				reqtype,<!--调用类型-->
+			</if>
+			<if test="mobile != '' and mobile != null">
+				mobile,<!--手机号-->
+			</if>
+			<if test="isBlack != '' and isBlack != null">
+				isBlack,<!--匹配结果-->
+			</if>
+			<if test="isLegal != '' and isLegal != null">
+				isLegal,<!--手机运营商-->
+			</if>
+			<if test="customSource != '' and customSource != null">
+				customSource,<!--聚合订单号-->
+			</if>
+			<if test="error_code != '' and error_code != null">
+				error_code,<!--创建时间-->
+			</if>
+			<if test="reason != '' and reason != null">
+				reason<!--状态-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="user_id != null and user_id != ''">
+				#{user_id, jdbcType=INTEGER},
+			</if>
+			<if test="upload_id != null and upload_id != ''">
+				#{upload_id, jdbcType=VARCHAR},
+			</if>
+			<if test="reqtype != null and reqtype != ''">
+				#{reqtype, jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null and mobile != ''">
+				#{mobile, jdbcType=VARCHAR},
+			</if>
+			<if test="isBlack != null and isBlack != ''">
+				#{isBlack, jdbcType=VARCHAR},
+			</if>
+			<if test="isLegal != null and isLegal != ''">
+				#{isLegal, jdbcType=VARCHAR},
+			</if>
+			<if test="customSource != null and customSource != ''">
+				#{customSource, jdbcType=VARCHAR},
+			</if>
+			<if test="error_code != null and error_code != ''">
+				#{error_code, jdbcType=VARCHAR},
+			</if>
+			<if test="reason != null and reason != ''">
+				#{reason, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+	
+	<!--新增月消费信息-->
+    <insert id="addMoonEleInfo" parameterType="moonEleInfoPO">
+		INSERT INTO RISK_MOON_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="user_id != '' and user_id != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="upload_id != '' and upload_id != null">
+				upload_id,<!--文件上传记录id-->
+			</if>
+			<if test="reqtype != '' and reqtype != null">
+				reqtype,<!--调用类型-->
+			</if>
+			<if test="mobile != '' and mobile != null">
+				mobile,<!--手机号-->
+			</if>
+			<if test="province != '' and province != null">
+				province,<!--省份-->
+			</if>
+			<if test="city != '' and city != null">
+				city,<!--城市-->
+			</if>
+			<if test="isp != '' and isp != null">
+				isp,<!--运营商-->
+			</if>
+			<if test="code != '' and code != null">
+				code,<!--代码-->
+			</if>
+			<if test="description != '' and description != null">
+				description,<!--等级描述-->
+			</if>
+			<if test="error_code != '' and error_code != null">
+				error_code,<!--创建时间-->
+			</if>
+			<if test="reason != '' and reason != null">
+				reason<!--接口调用结果-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="user_id != null and user_id != ''">
+				#{user_id, jdbcType=INTEGER},
+			</if>
+			<if test="upload_id != null and upload_id != ''">
+				#{upload_id, jdbcType=VARCHAR},
+			</if>
+			<if test="reqtype != null and reqtype != ''">
+				#{reqtype, jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null and mobile != ''">
+				#{mobile, jdbcType=VARCHAR},
+			</if>
+			<if test="province != null and province != ''">
+				#{province, jdbcType=VARCHAR},
+			</if>
+			<if test="city != null and city != ''">
+				#{city, jdbcType=VARCHAR},
+			</if>
+			<if test="isp != null and isp != ''">
+				#{isp, jdbcType=VARCHAR},
+			</if>
+			<if test="code != null and code != ''">
+				#{code, jdbcType=VARCHAR},
+			</if>
+			<if test="description != null and description != ''">
+				#{description, jdbcType=VARCHAR},
+			</if>
+			<if test="error_code != null and error_code != ''">
+				#{error_code, jdbcType=VARCHAR},
+			</if>
+			<if test="reason != null and reason != ''">
+				#{reason, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+	
+	<!--新增身份证验证信息-->
+    <insert id="addIdEleInfo" parameterType="idEleInfoPO">
+		INSERT INTO RISK_ID_INFO(
+			<if test="id != '' and id != null">
+				id,<!--主键id-->
+			</if>
+			<if test="user_id != '' and user_id != null">
+				user_id,<!--用户id-->
+			</if>
+			<if test="upload_id != '' and upload_id != null">
+				upload_id,<!--文件上传记录id-->
+			</if>
+			<if test="reqtype != '' and reqtype != null">
+				reqtype,<!--调用类型-->
+			</if>
+			<if test="idcard != '' and idcard != null">
+				idcard,<!--身份证号-->
+			</if>
+			<if test="realname != '' and realname != null">
+				realname,<!--姓名-->
+			</if>
+			<if test="res != '' and res != null">
+				res,<!--匹配结果-->
+			</if>
+			<if test="error_code != '' and error_code != null">
+				error_code,<!--错误码-->
+			</if>
+			<if test="reason != '' and reason != null">
+				reason<!--结果-->
+			</if>
+		)VALUES (
+			<if test="id != null and id != ''">
+				#{id, jdbcType=VARCHAR},
+			</if>
+			<if test="user_id != null and user_id != ''">
+				#{user_id, jdbcType=INTEGER},
+			</if>
+			<if test="upload_id != null and upload_id != ''">
+				#{upload_id, jdbcType=VARCHAR},
+			</if>
+			<if test="reqtype != null and reqtype != ''">
+				#{reqtype, jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null and idcard != ''">
+				#{idcard, jdbcType=VARCHAR},
+			</if>
+			<if test="realname != null and realname != ''">
+				#{realname, jdbcType=VARCHAR},
+			</if>
+			<if test="res != null and res != ''">
+				#{res, jdbcType=VARCHAR},
+			</if>
+			<if test="error_code != null and error_code != ''">
+				#{error_code, jdbcType=VARCHAR},
+			</if>
+			<if test="reason != null and reason != ''">
+				#{reason, jdbcType=VARCHAR}
+			</if>
+		)
+	</insert>
+
+	<!--使用时减少三要素订单信息条数-->
+	<update id="cutNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					num = num - #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--使用时减少黑名单订单信息条数-->
+	<update id="cutBlackNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					black_num = black_num - #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--使用时减少三要素简版订单信息条数-->
+	<update id="cutSanNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					san_num = san_num - #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	
+	<!--使用时减少身份证订单信息条数-->
+	<update id="cutIdNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					id_num = id_num - #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--使用时减少三要素订单信息条数-->
+	<update id="cutMoonNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					moon_num = moon_num - #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--增加可使用条数-->
+	<update id="addNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					num = num + #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--增加可使用条数-->
+	<update id="addSanNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					san_num = san_num + #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--增加可使用条数-->
+	<update id="addIdNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					id_num = id_num + #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--增加可使用条数-->
+	<update id="addBlackNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					black_num = black_num + #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--增加可使用条数-->
+	<update id="addMoonNumInfo" parameterType="Dto">
+		UPDATE risk_num_info
+			<set>
+				<if test="num != '' and num != null">
+					moon_num = moon_num + #{num}
+				</if>
+			</set>
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--减少试用次数-->
+	<update id="cutLastnumInfo" parameterType="Integer">
+		UPDATE risk_try_info
+			set	num = num - 1
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--减少试用次数-->
+	<update id="cutSannumInfo" parameterType="Integer">
+		UPDATE risk_try_info
+			set	san_num = san_num - 1
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--减少试用次数-->
+	<update id="cutBlacknumInfo" parameterType="Integer">
+		UPDATE risk_try_info
+			set	black_num = black_num - 1
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--减少试用次数-->
+	<update id="cutIdnumInfo" parameterType="Integer">
+		UPDATE risk_try_info
+			set	id_num = id_num - 1
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--减少试用次数-->
+	<update id="cutMoonnumInfo" parameterType="Integer">
+		UPDATE risk_try_info
+			set	moon_num = moon_num - 1
+			WHERE user_id = #{user_id}
+	</update>
+	
+	<!--订单状态修改为成功-->
+	<update id="paidsuccess" parameterType="String">
+		UPDATE risk_order_info
+			set	status = 2
+			WHERE order_num = #{order_num}
+	</update>
+	
+	<!--订单状态修改为失败-->
+	<update id="paidfailed" parameterType="String">
+		UPDATE risk_order_info
+			set	status = 3
+			WHERE order_num = #{order_num}
+	</update>
+	
+	<!--查询三要素调用结果-->
+	<select id="getThirdEleCallResultList" parameterType="Dto" resultType="Dto" useCache="false">
+	select * from risk_threeel_info WHERE upload_id = #{upload_id}
+    </select>
+    
+    <!--查询三要素简版调用结果-->
+	<select id="getSimpleThirdEleCallResultList" parameterType="Dto" resultType="Dto" useCache="false">
+	select * from risk_simplethreeel_info WHERE upload_id = #{upload_id}
+    </select>
+    
+    <!--查询黑名单调用结果-->
+	<select id="getBlackEleCallResultList" parameterType="Dto" resultType="Dto" useCache="false">
+	select * from risk_black_info WHERE upload_id = #{upload_id}
+    </select>
+    
+    <!--查询月消费调用结果-->
+	<select id="getMoonEleCallResultList" parameterType="Dto" resultType="Dto" useCache="false">
+	select * from risk_moon_info WHERE upload_id = #{upload_id}
+    </select>
+    
+    <!--查询身份证调用结果-->
+	<select id="getIdEleCallResultList" parameterType="Dto" resultType="Dto" useCache="false">
+	select * from risk_id_info WHERE upload_id = #{upload_id}
+    </select>
+    
+	<!--查询三要素调用信息-->
+	<select id="getThirdEleCallInfoList" parameterType="Dto" resultType="Dto" useCache="false">
+		SELECT t.id,t.user_id,t.itfc_id,t.file_name,t.num,t.date_time,t.status,
+			CASE WHEN t.status = '1' THEN '正在调用'
+			WHEN t.status = '2' THEN '调用完成'
+			END status_zh
+			FROM
+		RISK_UPLOAD_INFO t
+		<where>
+			<if test="user_id != '' and user_id != null">
+				and user_id = #{user_id}
+			</if>
+			<if test="file_name != '' and file_name != null">
+				and file_name like '%${file_name}%'
+			</if>
+			<if test="date_time_s != '' and date_time_s != null">
+				and date_time <![CDATA[>=]]> #{date_time_s}
+			</if>
+			<if test="date_time_e != '' and date_time_e != null">
+				and date_time <![CDATA[<=]]> #{date_time_e}
+			</if>
+				and itfc_id = '三要素详版'
+		</where>
+		order by date_time desc
+	</select>
+	
+	<!--查询三要素简版调用信息-->
+	<select id="getSanEleCallInfoList" parameterType="Dto" resultType="Dto" useCache="false">
+		SELECT t.id,t.user_id,t.itfc_id,t.file_name,t.num,t.date_time,t.status,
+			CASE WHEN t.status = '1' THEN '正在调用'
+			WHEN t.status = '2' THEN '调用完成'
+			END status_zh
+			FROM
+		RISK_UPLOAD_INFO t
+		<where>
+			<if test="user_id != '' and user_id != null">
+				and user_id = #{user_id}
+			</if>
+			<if test="file_name != '' and file_name != null">
+				and file_name like '%${file_name}%'
+			</if>
+			<if test="date_time_s != '' and date_time_s != null">
+				and date_time <![CDATA[>=]]> #{date_time_s}
+			</if>
+			<if test="date_time_e != '' and date_time_e != null">
+				and date_time <![CDATA[<=]]> #{date_time_e}
+			</if>
+				and itfc_id = '三要素简版'
+		</where>
+		order by date_time desc
+	</select>
+	
+	<!--查询身份证调用信息-->
+	<select id="getIdEleCallInfoList" parameterType="Dto" resultType="Dto" useCache="false">
+		SELECT t.id,t.user_id,t.itfc_id,t.file_name,t.num,t.date_time,t.status,
+			CASE WHEN t.status = '1' THEN '正在调用'
+			WHEN t.status = '2' THEN '调用完成'
+			END status_zh
+			FROM
+		RISK_UPLOAD_INFO t
+		<where>
+			<if test="user_id != '' and user_id != null">
+				and user_id = #{user_id}
+			</if>
+			<if test="file_name != '' and file_name != null">
+				and file_name like '%${file_name}%'
+			</if>
+			<if test="date_time_s != '' and date_time_s != null">
+				and date_time <![CDATA[>=]]> #{date_time_s}
+			</if>
+			<if test="date_time_e != '' and date_time_e != null">
+				and date_time <![CDATA[<=]]> #{date_time_e}
+			</if>
+				and itfc_id = '身份证验证'
+		</where>
+		order by date_time desc
+	</select>
+	
+	<!--查询黑名单调用信息-->
+	<select id="getBlackEleCallInfoList" parameterType="Dto" resultType="Dto" useCache="false">
+		SELECT t.id,t.user_id,t.itfc_id,t.file_name,t.num,t.date_time,t.status,
+			CASE WHEN t.status = '1' THEN '正在调用'
+			WHEN t.status = '2' THEN '调用完成'
+			END status_zh
+			FROM
+		RISK_UPLOAD_INFO t
+		<where>
+			<if test="user_id != '' and user_id != null">
+				and user_id = #{user_id}
+			</if>
+			<if test="file_name != '' and file_name != null">
+				and file_name like '%${file_name}%'
+			</if>
+			<if test="date_time_s != '' and date_time_s != null">
+				and date_time <![CDATA[>=]]> #{date_time_s}
+			</if>
+			<if test="date_time_e != '' and date_time_e != null">
+				and date_time <![CDATA[<=]]> #{date_time_e}
+			</if>
+				and itfc_id = '黑名单'
+		</where>
+		order by date_time desc
+	</select>
+	
+	<!--查询月消费调用信息-->
+	<select id="getMoonEleCallInfoList" parameterType="Dto" resultType="Dto" useCache="false">
+		SELECT t.id,t.user_id,t.itfc_id,t.file_name,t.num,t.date_time,t.status,
+			CASE WHEN t.status = '1' THEN '正在调用'
+			WHEN t.status = '2' THEN '调用完成'
+			END status_zh
+			FROM
+		RISK_UPLOAD_INFO t
+		<where>
+			<if test="user_id != '' and user_id != null">
+				and user_id = #{user_id}
+			</if>
+			<if test="file_name != '' and file_name != null">
+				and file_name like '%${file_name}%'
+			</if>
+			<if test="date_time_s != '' and date_time_s != null">
+				and date_time <![CDATA[>=]]> #{date_time_s}
+			</if>
+			<if test="date_time_e != '' and date_time_e != null">
+				and date_time <![CDATA[<=]]> #{date_time_e}
+			</if>
+				and itfc_id = '月消费'
+		</where>
+		order by date_time desc
+	</select>
+	
+	<!--查询订单列表信息-->
+	<select id="getOrderListInfoList" parameterType="Integer" resultType="Dto" useCache="false">
+		SELECT t.order_num,t.itfc_id,t.num,t.business_name,t.amount,t.datetime,t.status,
+			CASE WHEN t.status = '1' THEN '待支付'
+			WHEN t.status = '2' THEN '支付成功'
+			WHEN t.status = '3' THEN '支付失败'
+			END status_zh
+			FROM
+		RISK_ORDER_INFO t
+		WHERE user_id = #{user_id} and itfc_id="三要素详版" order by datetime desc
+	</select>
+	
+	<!--查询订单列表信息-->
+	<select id="getOrderListInfoListSan" parameterType="Integer" resultType="Dto" useCache="false">
+		SELECT t.order_num,t.itfc_id,t.num,t.business_name,t.amount,t.datetime,t.status,
+			CASE WHEN t.status = '1' THEN '待支付'
+			WHEN t.status = '2' THEN '支付成功'
+			WHEN t.status = '3' THEN '支付失败'
+			END status_zh
+			FROM
+		RISK_ORDER_INFO t
+		WHERE user_id = #{user_id} and itfc_id="三要素简版" order by datetime desc
+	</select>
+	
+	<!--查询订单列表信息-->
+	<select id="getOrderListInfoListId" parameterType="Integer" resultType="Dto" useCache="false">
+		SELECT t.order_num,t.itfc_id,t.num,t.business_name,t.amount,t.datetime,t.status,
+			CASE WHEN t.status = '1' THEN '待支付'
+			WHEN t.status = '2' THEN '支付成功'
+			WHEN t.status = '3' THEN '支付失败'
+			END status_zh
+			FROM
+		RISK_ORDER_INFO t
+		WHERE user_id = #{user_id} and itfc_id="身份证验证" order by datetime desc
+	</select>
+	
+	<!--查询订单列表信息-->
+	<select id="getOrderListInfoListBlack" parameterType="Integer" resultType="Dto" useCache="false">
+		SELECT t.order_num,t.itfc_id,t.num,t.business_name,t.amount,t.datetime,t.status,
+			CASE WHEN t.status = '1' THEN '待支付'
+			WHEN t.status = '2' THEN '支付成功'
+			WHEN t.status = '3' THEN '支付失败'
+			END status_zh
+			FROM
+		RISK_ORDER_INFO t
+		WHERE user_id = #{user_id} and itfc_id="黑名单" order by datetime desc
+	</select>
+	
+	<!--查询订单列表信息-->
+	<select id="getOrderListInfoListMoon" parameterType="Integer" resultType="Dto" useCache="false">
+		SELECT t.order_num,t.itfc_id,t.num,t.business_name,t.amount,t.datetime,t.status,
+			CASE WHEN t.status = '1' THEN '待支付'
+			WHEN t.status = '2' THEN '支付成功'
+			WHEN t.status = '3' THEN '支付失败'
+			END status_zh
+			FROM
+		RISK_ORDER_INFO t
+		WHERE user_id = #{user_id} and itfc_id="月消费" order by datetime desc
+	</select>
+
+	<!--修改调用信息 也就状态和数量需要改，都单独写了，不合并了-->
+	<update id="updCallStatus" parameterType="Dto">
+		UPDATE RISK_UPLOAD_INFO
+		<set>
+			<if test="status != '' and status != null">
+				status = #{status}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+</mapper>

@@ -1,0 +1,543 @@
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ include file="/WEB-INF/jsp/common/tags.jsp"%>
+<aos:html title="常用布局一" base="http" lib="ext">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link rel="stylesheet" href="${cxt}/static/css/unicom/common1.css" type="text/css" />
+    <link rel="stylesheet" href="${cxt}/static/css/unicom/common.css" type="text/css" />
+    <script src="${cxt}/static/js/unicom/clock.js" type="text/javascript"></script>
+    <!--主要样式-->
+    <link rel="stylesheet" type="text/css" href="${cxt}/static/css/unicom/pageGroup.css"/>
+    <script type="text/javascript" src="${cxt}/static/css/unicom/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="${cxt}/static/css/unicom/pageGroup.js"></script>
+</head>
+<body class="body_bg">
+<%--<table width="95%" border="0" cellspacing="0" cellpadding="0" class="left">
+    <tr>
+        <td><span class="reder">当前位置：</span><a href="main1.html" target="mainFrame">首页</a> </td>
+    </tr>
+</table>--%>
+<table width="95%" border="0" cellspacing="0" cellpadding="0" class="left" id="tb-one">
+    <tr  >
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td> <div align="center">三要素验证 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><a href="golist.html"  target="mainFrame"><img src="${cxt}/static/image/unicom/botton6.png" border="0"></a></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 手机号-证件核查 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><a href="golist.html"  target="mainFrame"><img src="${cxt}/static/image/unicom/botton6.png" border="0"></a></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 手机号- 姓名核查 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><a href="golist.html"  target="mainFrame"><img src="${cxt}/static/image/unicom/botton6.png" border="0"></a></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u68.png" width="49" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 实时位置接口 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.20元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u68.png" width="49" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 实时位置地市比对 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.20元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+    </tr>
+    <tr >
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <br>
+    </tr>
+    <tr >
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u148.png" width="46" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 工作地验证</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：2.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u148.png" width="46" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 居住地验证 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户状态验证</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">最近一次通话</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td><br>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">黑名单用户查询</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td><br>
+    </tr>
+    <tr >
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+    </tr>
+    <tr >
+        <td ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">呼叫转移</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">在网时长</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户性别查询</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户年龄查询</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户归属省市判断</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.20元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+    </tr>
+    <tr >
+        <td >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+    </tr>
+    <tr >
+        <td ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">基于imei+imsi查询用户性别年龄</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户沃信用分接口</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">最近终端查询</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.80元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">终端更换频次评分查询</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户最近六个月平均通话量评分接口</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+    </tr>
+</table>
+<!-------------------------------------------第二页--------------------------------------------------------------->
+<table width="95%" border="0" cellspacing="0" cellpadding="0" class="left" id="tb-two" style="display:none">
+    <tr  >
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td> <div align="center">用户近三个月漫游通话次数接口</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.80元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><a href="golist.html"  target="mainFrame"><img src="${cxt}/static/image/unicom/botton6.png" border="0"></a></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">最近六个月欠费停机次数</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><a href="golist.html"  target="mainFrame"><img src="${cxt}/static/image/unicom/botton6.png" border="0"></a></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">欠费查询接口</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><a href="golist.html"  target="mainFrame"><img src="${cxt}/static/image/unicom/botton6.png" border="0"></a></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png" width="49" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 用户近三个月话费均值查询接口</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.80元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png" width="49" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 用户最近六个月发送短信数量</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+    </tr>
+    <tr >
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <br>
+    </tr>
+    <tr >
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png" width="46" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 用户最近六个月平均流量评分接口</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：2.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png" width="46" height="47"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center"> 二次卡清理 </div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">用户有效交际圈评分</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：1.00元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ><table width="100%"  border="0">
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/u38.png"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center">常用联系人验证</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">价格：0.50元/次</div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="${cxt}/static/image/unicom/botton6.png"></div></td>
+            </tr>
+        </table></td>
+        <td width="20%" ></td>
+    </tr>
+    <tr >
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+    </tr>
+    <tr >
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+        <td width="20%" height="10" >&nbsp;</td>
+    </tr>
+    <tr >
+        <td >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+    </tr>
+    <tr >
+        <td >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+        <td width="20%" >&nbsp;</td>
+    </tr>
+</table>
+<div>
+    <!-------------------------------------------分页----------------------------------------------------------------->
+    <div id="pageGro" class="cb">
+        <div class="pageUp">上一页</div>
+        <div class="pageList">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+            </ul>
+        </div>
+        <div class="pageDown">下一页</div>
+    </div>
+    <!-------------------------------------------END 分页----------------------------------------------------------------->
+</div>
+</body>
+</aos:html>
