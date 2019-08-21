@@ -1,5 +1,3 @@
-<<<<<<< HEAD
 nihaonaisiday
-=======
 jfdkjfkfkjdjdkkjf
->>>>>>> feature1
+aaaaa
